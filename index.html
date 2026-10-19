@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Carlos Martins | Mentor de Logística</title>
+    <meta name="description" content="Livro, mentoria, artigos e o Logicheck: o quiz gratuito para descobrir o que falta para a sua próxima promoção." />
+    <meta name="theme-color" content="#0d1526" />
+    <meta property="og:title" content="Carlos Martins | Mentor de Logística" />
+    <meta property="og:description" content="Livro, mentoria, artigos e o Logicheck, quiz gratuito sobre promoção na logística." />
+    <meta property="og:image" content="/img/carlos-armazem.webp" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="preload" as="image" href="/img/carlos-armazem.webp" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-66V23JWTLV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-66V23JWTLV');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1134575089130644');
+      fbq('track', 'PageView');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "yukujnnnlj");
+    </script>
+  </head>
+  <body>
+    <!-- Meta Pixel noscript -->
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1134575089130644&ev=PageView&noscript=1" />
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Script de repasse de UTMs (Triwer) -->
+    <script>
+      (function() {
+        function appendUtmsToUrl(urlStr) {
+          if (!window.location.search) return urlStr;
+          try {
+            const url = new URL(urlStr, window.location.origin);
+            const currentParams = new URLSearchParams(window.location.search);
+            currentParams.forEach((value, key) => {
+              url.searchParams.set(key, value);
+            });
+            return url.toString();
+          } catch (e) {
+            return urlStr;
+          }
+        }
+
+        function isTrackableLink(href) {
+          return href && href.startsWith("http") && !href.startsWith(window.location.origin);
+        }
+
+        function updateLinks() {
+          if (!window.location.search) return;
+          var links = document.querySelectorAll('a');
+          links.forEach(function(item) {
+            if (isTrackableLink(item.href)) {
+              item.href = appendUtmsToUrl(item.href);
+            }
+          });
+        }
+
+        window.addEventListener('DOMContentLoaded', updateLinks);
+        window.addEventListener('load', updateLinks);
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (link && isTrackableLink(link.href)) {
+            link.href = appendUtmsToUrl(link.href);
+          }
+        }, true);
+
+        if (window.MutationObserver) {
+          var observer = new MutationObserver(function() {
+            updateLinks();
+          });
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
+
+        console.log('%cScript de rastreamento desenvolvido pela Triwer 🚀', 'font-size:16px;color:gold;');
+      })();
+    </script>
+  </body>
+</html>
