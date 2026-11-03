@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, MotionConfig, motion, useInView, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import BookMockup from "./components/BookMockup.jsx";
 import * as I from "./components/icons.jsx";
-import { INSTAGRAM_URL, LINKEDIN_URL, LIVRO_URL, LOGICHECK_URL, MENTORIA_URL, SUBSTACK_URL } from "./config.js";
+import { CSP_URL, INSTAGRAM_URL, LINKEDIN_URL, LIVRO_URL, LOGICHECK_URL, MENTORIA_URL, SUBSTACK_URL } from "./config.js";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -21,6 +21,7 @@ const SOCIAIS = [
 
 const MENU = [
   { nome: "Tímido demais para ser diretor", tag: "Lançamento", href: LIVRO_URL, Icon: I.Book },
+  { nome: "Como ser promovido", tag: "Método PONTE", href: CSP_URL, Icon: I.Award },
   { nome: "Mentoria de carreira", tag: "WhatsApp", href: MENTORIA_URL, Icon: I.Compass },
   { nome: "Artigos no Substack", tag: "Ler", href: SUBSTACK_URL, Icon: I.Substack },
   { nome: "Logicheck", tag: "Gratuito", href: LOGICHECK_URL, Icon: I.Quiz },
@@ -272,13 +273,14 @@ function Magnetic({ href, children, variant = "yellow" }) {
   );
 }
 
-function LinkCard({ href, title, children, cta, img, imgAlt, Icon, tone = "" }) {
+function LinkCard({ href, title, children, cta, img, imgAlt, Icon, tone = "", badge }) {
   return (
     <Reveal>
       <Tilt href={href} className={`link-card ${tone}`}>
         <img className="link-img" src={img} alt={imgAlt} loading="lazy" />
         <div className="link-shade" />
         <div className="link-copy">
+          {badge && <span className="link-badge">{badge}</span>}
           <h3 className="link-title">{title}</h3>
           <p className="link-text">{children}</p>
           <span className="link-cta">
@@ -376,6 +378,18 @@ export default function App() {
         <Hero />
         <div className="stack" id="links">
           <BookCard />
+          <LinkCard
+            href={CSP_URL}
+            title="Como ser promovido"
+            badge="Método PONTE"
+            tone="highlight"
+            img="/img/carlos-palco.webp"
+            imgAlt="Carlos Martins palestrando sobre carreira e promoção na logística"
+            cta="Conhecer o método"
+            Icon={I.Award}
+          >
+            Seja a melhor opção quando abrir uma vaga em <b>5 semanas</b>, sem trocar de empresa e sem puxar saco.
+          </LinkCard>
           <LinkCard
             href={MENTORIA_URL}
             title="Mentoria de carreira"

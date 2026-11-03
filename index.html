@@ -66,6 +66,19 @@
             currentParams.forEach((value, key) => {
               url.searchParams.set(key, value);
             });
+
+            // Compatibilidade direta com Eduzz (mapeia utm_source -> src e utm_campaign -> sck)
+            if (url.hostname.includes('eduzz.com')) {
+              const utmSource = currentParams.get('utm_source');
+              const utmCampaign = currentParams.get('utm_campaign');
+              if (utmSource && !url.searchParams.has('src')) {
+                url.searchParams.set('src', utmSource);
+              }
+              if (utmCampaign && !url.searchParams.has('sck')) {
+                url.searchParams.set('sck', utmCampaign);
+              }
+            }
+
             return url.toString();
           } catch (e) {
             return urlStr;

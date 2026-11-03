@@ -88,3 +88,10 @@ export const Check = (p) => (
     <path {...base} strokeWidth="3" d="M5 12.5l4.5 4.5L19 7.5" />
   </svg>
 );
+
+export const Award = (p) => (
+  <svg viewBox="0 0 24 24" width="19" height="19" {...p}>
+    <circle cx="12" cy="8" r="6" {...base} />
+    <path {...base} d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+  </svg>
+);

@@ -4,6 +4,9 @@
 // Livro (Página de vendas do livro).
 export const LIVRO_URL = "https://livro.mentordelogistica.com.br";
 
+// Curso: Como Ser Promovido (Método PONTE).
+export const CSP_URL = "https://csp.mentordelogistica.com.br";
+
 // Mentoria: WhatsApp. Formato: https://wa.me/55DDDNUMERO?text=mensagem
 export const MENTORIA_URL = "https://wa.me/555193134247?text=" + encodeURIComponent("Olá! Vim pela página de links e gostaria de saber mais sobre a mentoria de carreira.");
 
