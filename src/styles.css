@@ -127,6 +127,133 @@ button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent
 }
 .feature-sub { color: #c6d1e8; font-size: 15px; margin: 0 auto 22px; max-width: 330px; }
 
+/* Preview do Vídeo VSL no Card de Destaque */
+.feature-video-stage {
+  position: relative;
+  display: block;
+  margin: 6px auto 26px;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.feature-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--navy-3);
+  border: 1px solid rgba(245, 217, 10, 0.35);
+  box-shadow: 0 22px 50px -14px rgba(0, 0, 0, 0.75), 0 0 35px -10px rgba(245, 217, 10, 0.2);
+}
+.feature-video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s var(--ease), filter 0.7s var(--ease);
+}
+.feature-video-stage:hover .feature-video-thumb {
+  transform: scale(1.04);
+}
+.feature-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 21, 38, 0.2) 0%, rgba(13, 21, 38, 0.3) 40%, rgba(13, 21, 38, 0.88) 100%);
+  pointer-events: none;
+}
+.feature-video-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(13, 21, 38, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.feature-video-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-dot 1.8s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.feature-video-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+.feature-video-play {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: #0b0b0b;
+  box-shadow: 0 0 0 8px rgba(245, 217, 10, 0.28), 0 16px 36px -8px rgba(0, 0, 0, 0.8);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.feature-video-stage:hover .feature-video-play {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 14px rgba(245, 217, 10, 0.38), 0 20px 40px -8px rgba(0, 0, 0, 0.9);
+}
+.feature-video-play svg {
+  margin-left: 3px;
+}
+.feature-video-bar {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #c6d1e8;
+  pointer-events: none;
+}
+.feature-video-label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #e2edff;
+}
+.feature-video-cta {
+  color: var(--yellow);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.feature-note {
+  font-size: 12px;
+  color: #a4b4d6;
+  margin: 12px 0 0;
+  letter-spacing: 0.02em;
+}
+
 /* Botões */
 .cta {
   position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%;
@@ -162,6 +289,26 @@ button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent
 .link-card:hover .link-arrow { transform: rotate(45deg); }
 
 .link-card.highlight { border-color: rgba(245, 217, 10, 0.35); box-shadow: 0 20px 50px -20px rgba(245, 217, 10, 0.15); }
+.link-card.book .link-img {
+  width: auto;
+  max-width: 38%;
+  height: 86%;
+  right: 4%;
+  top: 7%;
+  object-fit: contain;
+  object-position: right center;
+  filter: drop-shadow(-8px 12px 18px rgba(0, 0, 0, 0.7));
+  border-radius: 4px;
+  transform: rotate(3deg);
+  transition: transform 0.5s var(--ease), filter 0.5s var(--ease);
+}
+.link-card.book:hover .link-img {
+  transform: rotate(0deg) scale(1.06);
+  filter: drop-shadow(-12px 16px 24px rgba(0, 0, 0, 0.9));
+}
+.link-card.book .link-shade {
+  background: linear-gradient(90deg, var(--navy-3) 48%, rgba(24, 38, 72, 0.7) 70%, rgba(24, 38, 72, 0) 92%);
+}
 .link-card.light { background: var(--paper); border-color: transparent; }
 .link-card.light .link-img { width: 70%; right: -18%; object-position: 30% 40%; }
 .link-card.light .link-shade { background: linear-gradient(90deg, var(--paper) 42%, rgba(238, 242, 251, 0.8) 62%, rgba(238, 242, 251, 0) 95%); }

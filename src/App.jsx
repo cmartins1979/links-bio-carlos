@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, MotionConfig, motion, useInView, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
-import BookMockup from "./components/BookMockup.jsx";
 import * as I from "./components/icons.jsx";
 import { CSP_URL, INSTAGRAM_URL, LINKEDIN_URL, LIVRO_URL, LOGICHECK_URL, MENTORIA_URL, SUBSTACK_URL } from "./config.js";
 
@@ -20,11 +19,11 @@ const SOCIAIS = [
 ];
 
 const MENU = [
-  { nome: "Tímido demais para ser diretor", tag: "Lançamento", href: LIVRO_URL, Icon: I.Book },
-  { nome: "Como ser promovido", tag: "Método PONTE", href: CSP_URL, Icon: I.Award },
+  { nome: "Como ser promovido", tag: "Aula gratuita • Método PONTE", href: CSP_URL, Icon: I.Award },
+  { nome: "Tímido demais para ser diretor", tag: "Livro na Amazon", href: LIVRO_URL, Icon: I.Book },
   { nome: "Mentoria de carreira", tag: "WhatsApp", href: MENTORIA_URL, Icon: I.Compass },
   { nome: "Artigos no Substack", tag: "Ler", href: SUBSTACK_URL, Icon: I.Substack },
-  { nome: "Logicheck", tag: "Gratuito", href: LOGICHECK_URL, Icon: I.Quiz },
+  { nome: "Logicheck", tag: "Quiz gratuito", href: LOGICHECK_URL, Icon: I.Quiz },
 ];
 
 // Método MPCT, os mesmos 4 pilares que o Logicheck avalia.
@@ -207,10 +206,10 @@ function Hero() {
 
 const ruas = ["M-20 70 L260 -20", "M-20 170 L380 10", "M40 300 L470 90", "M80 -10 L240 330", "M210 -10 L360 300", "M330 210 C400 170 450 170 520 140"];
 
-function BookCard() {
+function CspFeatureCard() {
   return (
-    <Reveal className="feature-wrap">
-      <span className="notch notch-yellow">Lançamento</span>
+    <Reveal className="feature-wrap" id="aula">
+      <span className="notch notch-yellow">Aula Liberada</span>
       <div className="feature">
         <svg className="feature-planta" viewBox="0 0 460 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g fill="none" stroke="currentColor" strokeWidth="1.2">
@@ -221,12 +220,47 @@ function BookCard() {
             <motion.circle cx="400" cy="70" r="22" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.8, delay: 0.8 }} />
           </g>
         </svg>
-        <div className="feature-book">
-          <BookMockup size={190} baseY={-20} />
-        </div>
+
+        <motion.a
+          {...linkProps(CSP_URL)}
+          className="feature-video-stage"
+          whileHover={{ y: -3 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          aria-label="Assistir à aula Como ser promovido em até 5 semanas"
+        >
+          <div className="feature-video-frame">
+            <img
+              src="/img/vsl-thumb.jpg"
+              onError={(e) => {
+                e.currentTarget.src = "/img/carlos-palco.webp";
+              }}
+              alt="Carlos Martins explicando o Método PONTE em aula gravada"
+              className="feature-video-thumb"
+              loading="lazy"
+            />
+            <div className="feature-video-overlay" />
+            <div className="feature-video-badge">
+              <span className="feature-video-dot" />
+              <span>Método PONTE</span>
+            </div>
+            <div className="feature-video-center">
+              <span className="feature-video-play">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </div>
+            <div className="feature-video-bar">
+              <span className="feature-video-label">Vídeo de apresentação</span>
+              <span className="feature-video-cta">Assistir agora ▶</span>
+            </div>
+          </div>
+        </motion.a>
+
         <div className="feature-body">
           <h2 className="feature-title">
-            Tímido demais para ser{" "}
+            Como ser promovido em até{" "}
             <motion.span
               className="tape"
               initial={{ clipPath: "inset(0 100% 0 0)", rotate: -3 }}
@@ -234,11 +268,14 @@ function BookCard() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease, delay: 0.5 }}
             >
-              diretor
+              5 semanas
             </motion.span>
           </h2>
-          <p className="feature-sub">De assistente a diretor de logística em apenas 10 anos. O passo a passo, no meu primeiro livro.</p>
-          <Magnetic href={LIVRO_URL}>Quero o meu livro</Magnetic>
+          <p className="feature-sub">
+            Assista a esta aula rápida e conheça o Método PONTE: o caminho prático para virar a escolha óbvia na logística — sem trocar de empresa e sem virar puxa-saco.
+          </p>
+          <Magnetic href={CSP_URL}>Assistir à aula gratuita</Magnetic>
+          <p className="feature-note">Acesso imediato • Assista antes de sair do ar</p>
         </div>
       </div>
     </Reveal>
@@ -377,18 +414,18 @@ export default function App() {
         <Menu open={menu} onClose={() => setMenu(false)} />
         <Hero />
         <div className="stack" id="links">
-          <BookCard />
+          <CspFeatureCard />
           <LinkCard
-            href={CSP_URL}
-            title="Como ser promovido"
-            badge="Método PONTE"
-            tone="highlight"
-            img="/img/carlos-palco.webp"
-            imgAlt="Carlos Martins palestrando sobre carreira e promoção na logística"
-            cta="Conhecer o método"
-            Icon={I.Award}
+            href={LIVRO_URL}
+            title="Tímido demais para ser diretor"
+            badge="Livro • R$ 14,96"
+            tone="book"
+            img="/img/capa-livro.webp"
+            imgAlt="Capa do livro Tímido demais para ser diretor de Carlos Martins"
+            cta="Comprar na Amazon"
+            Icon={I.Book}
           >
-            Seja a melhor opção quando abrir uma vaga em <b>5 semanas</b>, sem trocar de empresa e sem puxar saco.
+            De assistente a diretor de logística em apenas 10 anos. O mapa prático para crescer na carreira.
           </LinkCard>
           <LinkCard
             href={MENTORIA_URL}
