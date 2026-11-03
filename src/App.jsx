@@ -208,9 +208,9 @@ const ruas = ["M-20 70 L260 -20", "M-20 170 L380 10", "M40 300 L470 90", "M80 -1
 
 function CspFeatureCard() {
   return (
-    <Reveal className="feature-wrap" id="aula">
+    <Reveal className="feature-wrap light-wrap" id="aula">
       <span className="notch notch-yellow">Aula Liberada</span>
-      <div className="feature">
+      <div className="feature light">
         <svg className="feature-planta" viewBox="0 0 460 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <g fill="none" stroke="currentColor" strokeWidth="1.2">
             {ruas.map((d, i) => (
