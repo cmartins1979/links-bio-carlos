@@ -1,6 +1,9 @@
 // Tudo que muda sem mexer no layout fica aqui.
 // Enquanto um link estiver "#", o botão aparece mas não leva a lugar nenhum.
 
+// Controle de exibição de banners
+export const EXIBIR_BANNER_LIVRO = false;
+
 // Livro (Página de vendas do livro).
 export const LIVRO_URL = "https://livro.mentordelogistica.com.br";
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, MotionConfig, motion, useInView, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 import * as I from "./components/icons.jsx";
-import { CSP_URL, INSTAGRAM_URL, LINKEDIN_URL, LIVRO_URL, LOGICHECK_URL, MENTORIA_URL, SUBSTACK_URL } from "./config.js";
+import { CSP_URL, EXIBIR_BANNER_LIVRO, INSTAGRAM_URL, LINKEDIN_URL, LIVRO_URL, LOGICHECK_URL, MENTORIA_URL, SUBSTACK_URL } from "./config.js";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -415,18 +415,20 @@ export default function App() {
         <Hero />
         <div className="stack" id="links">
           <CspFeatureCard />
-          <LinkCard
-            href={LIVRO_URL}
-            title="Tímido demais para ser diretor"
-            badge="Livro • R$ 14,96"
-            tone="book"
-            img="/img/capa-livro.webp"
-            imgAlt="Capa do livro Tímido demais para ser diretor de Carlos Martins"
-            cta="Comprar na Amazon"
-            Icon={I.Book}
-          >
-            De assistente a diretor de logística em apenas 10 anos. O mapa prático para crescer na carreira.
-          </LinkCard>
+          {EXIBIR_BANNER_LIVRO && (
+            <LinkCard
+              href={LIVRO_URL}
+              title="Tímido demais para ser diretor"
+              badge="Livro • R$ 14,96"
+              tone="book"
+              img="/img/capa-livro.webp"
+              imgAlt="Capa do livro Tímido demais para ser diretor de Carlos Martins"
+              cta="Comprar na Amazon"
+              Icon={I.Book}
+            >
+              De assistente a diretor de logística em apenas 10 anos. O mapa prático para crescer na carreira.
+            </LinkCard>
+          )}
           <LinkCard
             href={MENTORIA_URL}
             title="Mentoria de carreira"
